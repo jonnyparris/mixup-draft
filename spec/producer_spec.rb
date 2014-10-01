@@ -24,8 +24,8 @@ describe Producer do
   end
 
   describe "validations" do
-    it "is valid with a producer_name, email, and password" do
-      valid_user = Producer.new(producer_name: 'D-Rok', email: 'drop@dabass.com', password: 'boselecta')
+    it "is valid with a producer_name, email, and confirmed password" do
+      valid_user = Producer.new(producer_name: 'D-Rok', email: 'drop@dabass.com', password: 'boselecta', password_confirmation: 'boselecta')
       expect(valid_user).to be_valid
     end
 
@@ -39,6 +39,10 @@ describe Producer do
 
     it "is invalid without a password" do
       expect(Producer.new(password: nil)).to have(1).errors_on(:password)
+    end
+
+    it "is invalid without a password confirmation" do
+      expect(Producer.new(producer_name: 'D-Rok', email: 'drop@dabass.com', password: 'boselecta', password_confirmation: 'alzheimers')).to have(1).errors_on(:password_confirmation)
     end
 
     it "is invalid with a duplicate email address" do
