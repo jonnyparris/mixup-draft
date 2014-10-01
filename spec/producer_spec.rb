@@ -14,9 +14,9 @@ describe Producer do
   end
 
   describe "associations" do
-  it { should have_many(:stem) }
-  it { should have_many(:remix) }
-  it { should have_many(:circle).through(:remix) }
+  it { should have_many(:stems) }
+  it { should have_many(:remixes) }
+  it { should have_many(:circles).through(:remixes) }
   end
 
   describe "validations" do
