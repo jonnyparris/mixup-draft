@@ -1,7 +1,7 @@
 class Producer < ActiveRecord::Base
   # Remember to create a migration!
-  validates :producer_name, presence: true
-  validates :email, presence: true
+  validates :producer_name, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true
   validates :password, presence: true
 
   has_many :stems

@@ -20,6 +20,7 @@ group :test do
   gem 'rack-test'
   gem 'rspec'
   gem 'capybara'
+  gem 'rspec-collection_matchers'
 end
 
 group :test, :development do

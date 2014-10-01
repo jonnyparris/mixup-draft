@@ -19,6 +19,10 @@ describe Producer do
   it { should have_many(:circles).through(:remixes) }
   end
 
+  before :all do
+    Producer.delete_all
+  end
+
   describe "validations" do
     it "is valid with a producer_name, email, and password" do
       valid_user = Producer.new(producer_name: 'D-Rok', email: 'drop@dabass.com', password: 'boselecta')
