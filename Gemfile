@@ -15,11 +15,15 @@ gem 'rake'
 
 gem 'shotgun'
 
+gem 'bcrypt-ruby'
+
+
 group :test do
   gem 'shoulda-matchers'
   gem 'rack-test'
   gem 'rspec'
   gem 'capybara'
+  gem 'rspec-collection_matchers'
 end
 
 group :test, :development do

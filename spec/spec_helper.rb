@@ -13,6 +13,7 @@ require 'rack/test'
 require 'capybara'
 require 'capybara/rspec'
 require 'capybara/dsl'
+require 'rspec/collection_matchers'
 
 RSpec.configure do |config|
   config.include Rack::Test::Methods
