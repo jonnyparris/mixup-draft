@@ -7,7 +7,7 @@ class CreateProducers < ActiveRecord::Migration
   		t.string :email
   		t.string :avatar
   		t.string :location
-  		t.string :password
+  		t.string :password_hash
 
   		t.timestamps
   	end
