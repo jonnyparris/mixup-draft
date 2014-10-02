@@ -7,7 +7,7 @@ describe Circle do
     it { should respond_to(:submit_deadline) }
 
     #not sure whether to link this to producers yet 
-    it { should respond_to(:creator) }
+    it { should respond_to(:creator_id) }
   end
 
   describe "associations" do
@@ -16,8 +16,8 @@ describe Circle do
   end
 
   describe "validations" do    
-    it "is valid with a name and deadline" do
-      valid_circle = Circle.new(name: 'Xmas Giggles', deadline: '25/12/2014')
+    it "is valid with a name, signup deadline and submit deadline" do
+      valid_circle = Circle.new(name: 'Xmas Giggles', signup_deadline: '1/12/2014', submit_deadline: '25/12/2014')
       expect(valid_circle).to be_valid
     end
 
@@ -25,8 +25,12 @@ describe Circle do
       expect(Circle.new(name: nil)).to have(1).errors_on(:name)
     end
 
-    it "is invalid without a deadline" do
-      expect(Circle.new(deadline: nil)).to have(1).errors_on(:deadline)    
+    it "is invalid without a signup deadline" do
+      expect(Circle.new(signup_deadline: nil)).to have(1).errors_on(:signup_deadline)    
+    end
+
+    it "is invalid without a submit deadline" do
+      expect(Circle.new(submit_deadline: nil)).to have(1).errors_on(:submit_deadline)    
     end
 
     #trying out the shoulda-matcher gem

@@ -17,7 +17,13 @@ describe Remix do
 
   describe "validations" do    
     it "is valid with a circle and stem" do
-      valid_stem = Remix.new(circle: 1, stem: 1)
+      Stem.delete_all
+      Circle.delete_all
+      Producer.delete_all
+      Circle.create(name: 'Xmas Giggles', signup_deadline: '1/12/2014', submit_deadline: '25/12/2014')
+      Producer.create(producer_name: 'D-Rok', email: 'drop@dabass.com', password: 'boselecta', password_confirmation: 'boselecta')
+      Stem.create(track_name: 'Peanut Butter Jammin',download_url: "http://www.reddit.com/r/IsolatedVocals/top/", producer: Producer.first)
+      valid_stem = Remix.new(circle: Circle.first, stem: Stem.first)
       expect(valid_stem).to be_valid
     end
 
