@@ -15,6 +15,10 @@ describe Circle do
     it { should have_many(:remix) }
   end
 
+  before do
+    Circle.delete_all
+  end
+  
   describe "validations" do    
     it "is valid with a name, signup deadline and submit deadline" do
       valid_circle = Circle.new(name: 'Xmas Giggles', signup_deadline: '1/12/2014', submit_deadline: '25/12/2014')

@@ -16,9 +16,10 @@ describe Stem do
   describe "validations" do    
     it "is valid with a track_name, download_url, and producer" do
       Producer.delete_all
-      Producer.create(producer_name: 'D-Rok', email: 'drop@dabass.com', password: 'boselecta', password_confirmation: 'boselecta')
-      valid_stem = Stem.new(track_name: 'Peanut Butter Jammin',download_url: "http://www.reddit.com/r/IsolatedVocals/top/", producer: Producer.first)
-      p valid_stem.errors.full_messages
+      Stem.delete_all
+      valid_producer = Producer.create(producer_name: 'D-Rok', email: 'drop@dabass.com', password: 'boselecta', password_confirmation: 'boselecta')
+      p "the fake producer is: #{valid_producer.valid?}"
+      valid_stem = Stem.new(track_name: 'Peanut Butter Jammin',download_url: "http://www.reddit.com/r/IsolatedVocals/top/", producer: Producer.last)
       expect(valid_stem).to be_valid
     end
 
