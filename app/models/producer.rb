@@ -14,6 +14,7 @@ class Producer < ActiveRecord::Base
   
   has_many :stems
   has_many :remixes
+  has_many :circles
   has_many :circles, through: :remixes
 
   

@@ -3,14 +3,16 @@ require_relative "./spec_helper"
 describe Circle do
   describe "attributes" do
     it { should respond_to(:name) }
-    it { should respond_to(:deadline) }
+    it { should respond_to(:signup_deadline) }
+    it { should respond_to(:submit_deadline) }
 
     #not sure whether to link this to producers yet 
-    it { should respond_to(:created_by) }
+    it { should respond_to(:creator) }
   end
 
   describe "associations" do
-    it { should belong_to(:remix).with_foreign_key('circle_id') }
+    it { should belong_to(:producer).with_foreign_key('creator_id') }
+    it { should have_many(:remix) }
   end
 
   describe "validations" do    
