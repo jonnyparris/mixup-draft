@@ -13,8 +13,8 @@ class Producer < ActiveRecord::Base
   validates :password_hash, presence: true
   
   has_many :stems
-  has_many :remixes
-  has_many :circles
+  has_many :remixes, class_name: "Remix",   foreign_key: "remixer_id"
+  has_many :circles, class_name: "Circle",  foreign_key: "creator_id"
   has_many :circles, through: :remixes
 
   

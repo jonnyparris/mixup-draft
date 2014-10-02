@@ -15,7 +15,7 @@ describe Producer do
 
   describe "associations" do
   it { should have_many(:stems) }
-  it { should have_many(:remixes) }
+  it { should have_many(:remixes).with_foreign_key('remixer_id') }
   it { should have_many(:circles) }
   it { should have_many(:circles).through(:remixes) }
   end

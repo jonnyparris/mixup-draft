@@ -9,8 +9,8 @@ describe Stem do
 
   describe "associations" do
     it { should belong_to(:producer) }
-    it { should have_many(:remix) }
-    it { should have_many(:circle).through(:remix) }
+    it { should have_many(:remixes) }
+    it { should have_many(:circles).through(:remixes) }
   end
 
   describe "validations" do    
@@ -18,6 +18,7 @@ describe Stem do
       Producer.delete_all
       Producer.create(producer_name: 'D-Rok', email: 'drop@dabass.com', password: 'boselecta', password_confirmation: 'boselecta')
       valid_stem = Stem.new(track_name: 'Peanut Butter Jammin',download_url: "http://www.reddit.com/r/IsolatedVocals/top/", producer: Producer.first)
+      p valid_stem.errors.full_messages
       expect(valid_stem).to be_valid
     end
 
