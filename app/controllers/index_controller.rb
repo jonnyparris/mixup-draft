@@ -37,17 +37,19 @@ end
 
 #----------- Dashboard -----------
 get '/dashboard' do
-	if current_user
-		erb :dashboard
-	else
-		@error = "Please login to view that page!"
-		erb :index
-	end
+	erb :dashboard
+	# if current_user
+	# 	erb :dashboard
+	# else
+	# 	@error = "Please login to view that page!"
+	# 	erb :index
+	# end
 end
 
 #----------- Stems -----------
 # create stem
 post '/add_stem' do
+	content_type :json
 	Stem.create(params)
 	Stem.last.to_json
 end
