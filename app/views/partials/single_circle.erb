@@ -7,6 +7,12 @@
 	<p>Signup deadline: <%= @circle.signup_deadline %></p>
 	<p><%= @circle.remix.count %> stems submitted so far</p>
 	<button id="mixup">Start Mixup!</button>
-	<button id="join">Join Circle</button>
+	<button data-dropdown="join_circle" aria-controls="join_circle" aria-expanded="false" id="submit">Join Circle with Stem</button>
 	<button id="submit">Submit Remix</button>
+
+	<ul id="join_circle" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
+		<% Producer.find(session[:user]).stems.each do |stem| %>
+	  <li><a href="#" class=<%="#{@circle.id}"%> ><%= stem.track_name %></a></li>
+	  <% end %>
+	</ul>
 </div>

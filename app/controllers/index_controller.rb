@@ -83,9 +83,13 @@ get '/circles' do
 end
 
 # submit stem to circle
-post '/circles/:id/stems/:id' do
+post '/circles/:id/stems' do
+	p "*"*80
+	p params
+	p "*"*80
 	content_type :json
-	add_stem = Circle.find(params[:circle_id]).stems.create(params[:stem])
+	stem_id = Stem.find_by(track_name: params[:stem_name]).id
+	add_stem = Circle.find(params[:circle_id]).stems.create(stem_id)
 	add_stem.to_json
 end
 

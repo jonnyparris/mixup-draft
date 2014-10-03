@@ -25,7 +25,7 @@
         <h4><%= stem.track_name %></h4>
           <p><a href="<%= stem.download_url %>"><%= stem.download_url %></a></p>
           <% if stem.remixes.count > 0 %>
-          <h5>Remixes</h5>
+          <h5><%= stem.track_name %> remixes</h5>
           <table>
             <tr>
               <th>Remix</th>
