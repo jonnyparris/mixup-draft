@@ -12,14 +12,29 @@ end
 
 def mixup(circle)
 	# assign remixer IDs to stem owners at random
-	# output newly mixed circle
-	members = circle.remix.map { |remix| remix.stem.producer}
-	n = (1..members.length-1).to_a.sample
-	remixers = members.rotate(n)
-	@allocations = Hash[members.zip(remixers)]
+	# output newly mixed circle as a hash
+	stems = circle.remix.map { |remix| remix.stem }
+	n = (1..stems.length-1).to_a.sample
+	remixers = stems.map { |stem| stem.producer}
+	remixers.rotate!(n)
+	@allocations = Hash[stems.zip(remixers)]
+	
+	@allocations.each do |stem,producer|
+		circle.remix.each do |remix|
+			if remix.stem == stem
+				remix.remixer_id = stem.producer_id
+			end
+		end
+
+		if current_user.producer_name == producer.producer_name
+			@current_user_match = {producer: stem}
+		end
+	end
+
 	p"*"*80
-	p n
-	p "final allocations: #{@allocations}"
+	p "rotated by #{n}"
+	p "#{current_user.producer_name} has this allocation: #{@current_user_match}"
+	p "New circle state: #{circle.remix.each { |remix| remix.name } }"
 	p"*"*80
-	@allocations
+	@current_user_match
 end

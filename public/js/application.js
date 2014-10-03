@@ -66,6 +66,14 @@ $(document).ready(function() {
       mixupCircle(circlePacket);
   });
 
+  $('#submit_remix').on('click', function(event) {
+      event.preventDefault();
+      console.log(event);
+      console.log('selected circle for reimx submission: '+event.target.className);
+      var circlePacket = {circle_id: event.target.className};
+      submitRemix(circlePacket);
+  });
+
 });
 
 function addStem(event) {
@@ -142,7 +150,8 @@ function mixupCircle(circlePacket) {
         data: circlePacket,
     })
     .done(function(data) {
-        console.log(data);
+        console.log('Which stem do I have to remix? '+data.producer.track_name);
+        renderRemixTodo(data)
         console.log("success");
     })
     .fail(function() {
@@ -154,4 +163,13 @@ function mixupCircle(circlePacket) {
     
 }
     
+function renderRemixTodo(data) {
+    $('#mixup_modal').append('<hr>');
+    $('#mixup_modal').append('<p>'+data.producer.track_name+'</p>');
+    $('#mixup_modal').append('<a href="'+data.producer.download_url+'">'+data.producer.download_url+'</a></p>');
+}
+
+function submitRemix(circlePacket) {
+    console.log('submit remix to database');
+}
     

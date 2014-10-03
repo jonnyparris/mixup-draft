@@ -8,11 +8,18 @@
 	<p><%= @circle.remix.count %> stems submitted so far</p>
 	<button id="mixup_circle" class=<%="#{@circle.id}"%>>Start Mixup!</button>
 	<button data-dropdown="join_circle" aria-controls="join_circle" aria-expanded="false" id="submit">Join Circle with Stem</button>
-	<button id="submit">Submit Remix</button>
+	<button data-reveal-id="submit_remix_modal">Submit Remix</button>
 
 	<ul id="join_circle" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
 		<% Producer.find(session[:user]).stems.each do |stem| %>
 	  <li><a href="#" class=<%="#{@circle.id}"%> ><%= stem.track_name %></a></li>
 	  <% end %>
 	</ul>
+
 </div>
+
+	<div id="submit_remix_modal" class="reveal-modal" data-reveal>
+	  <input type="url" name="download_url" placeholder="Paste download link to your finished remix here...">
+	  <button id="submit_remix" class="right">Submit Remix</button>
+	  <a class="close-reveal-modal">&#215;</a>
+	</div>

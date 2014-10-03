@@ -19,7 +19,6 @@
       <%= erb :'partials/circles' %>
       <%= erb :'partials/single_circle', :locals => {circle_id: 1} %>
     </div>
-    
      
     <div class="large-3 pull-9 columns">
       <p><img src="./images/artistic_license.jpg"/></p>
@@ -27,15 +26,20 @@
       <p><%= @user.location %></p>
 
       <ul class="side-nav">
-        <li><a href="#Stems" id="stems">Stems</a></li>
+        <li><a href="#Stems" id="stems">My Stems</a></li>
+        <li><a href="#" data-reveal-id="mixup_modal">Remixes TODO</a></li>
         <li><a href="#Circles" id="circles">Browse Circles</a></li>
-        <li><a href="#BrowseRemixes" id="remixes">Browse Remixes</a></li>
-        <li><a href="#BrowseProdcuers" id="producers">Browse Producers</a></li>
+<!--         <li><a href="#BrowseRemixes" id="remixes">Browse Remixes</a></li>
+        <li><a href="#BrowseProdcuers" id="producers">Browse Producers</a></li> -->
       </ul>
     </div>
     
   </div>
     
+<div id="mixup_modal" class="reveal-modal" data-reveal>
+  <h2>Remixes assigned to you live here</h2>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
   
    
   
