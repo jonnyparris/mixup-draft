@@ -5,15 +5,16 @@ end
 
 #----------- Users -----------
 post '/signup' do
-	user = Producer.new(params[:user])
- 	user.password = params[:user][:password]
+	user = Producer.new(params)
+ 	user.password = params[:password]
  	
  	if user.valid?
 	 	user.save!
 	 	session[:user] = user.id
 	 	redirect '/dashboard'
 	else
- 		user.errors.full_messages.to_json
+ 		@errors = user.errors.full_messages
+ 		erb :index
  	end
 end
 
@@ -21,29 +22,30 @@ end
 
 # login with API??
 
-post	'/login' do
+get	'/login' do
 	@user = find_user
 	if @user && @user.password == params[:password]
  		session[:user] = @user.id
+		redirect '/dashboard'
 	else
-		error = "nah bruv, try again"
+		@error = "nah bruv, try again or sign up!"
+		erb :index
 	end
-	redirect '/dashboard'
 end
 
-delete '/logout/:id' do
+delete '/logout' do
 	logout
 end
 
 #----------- Dashboard -----------
 get '/dashboard' do
-	erb :dashboard
-	# if current_user
-	# 	erb :dashboard
-	# else
-	# 	@error = "Please login to view that page!"
-	# 	erb :index
-	# end
+	if current_user
+		current_user
+		erb :dashboard
+	else
+		@error = "Please login to view that page!"
+		erb :index
+	end
 end
 
 #----------- Stems -----------

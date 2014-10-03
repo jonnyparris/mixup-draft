@@ -1,0 +1,12 @@
+<div id="single_circle_partial" style="display: none;">
+	<hr>
+	<a href="#" class="right">back</a>
+	<%  @circle = Circle.find(circle_id) %>
+	<h3> <%=@circle.name %></h3>
+	<p>Signup deadline: <%= @circle.signup_deadline %></p>
+	<p>Signup deadline: <%= @circle.signup_deadline %></p>
+	<p><%= @circle.remix.count %> stems submitted so far</p>
+	<button id="mixup">Start Mixup!</button>
+	<button id="join">Join Circle</button>
+	<button id="submit">Submit Remix</button>
+</div>

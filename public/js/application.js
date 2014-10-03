@@ -1,4 +1,13 @@
 $(document).ready(function() {
+  $('.signup').on('click', function(event) {
+  	event.preventDefault();
+  	console.log('signup form');
+  });
+  $('.login').on('click', function(event) {
+  	event.preventDefault();
+  	console.log('login form');
+  });
+
   $('button').on('click', function(event) {
   	event.preventDefault();
   	switch(event.target.className) {
@@ -12,6 +21,35 @@ $(document).ready(function() {
   			break;
   	}
   });
+
+  $('.side-nav #stems').on('click', function(event) {
+  	event.preventDefault();
+  	$('#stems_partial').show(400)
+  	$('#circles_partial').hide(400)
+  	$('#single_circle_partial').hide(400)
+  });
+
+  $('.side-nav #circles').on('click', function(event) {
+  	event.preventDefault();
+  	$('#stems_partial').hide(400)
+  	$('#circles_partial').show(400)
+  	$('#single_circle_partial').hide(400)
+  });
+
+  $('#my_circles .circle_row').on('click', function(event) {
+  	console.log(event.target.parentNode.parentNode.id);
+  	var circle_id = event.target.parentNode.parentNode.id;
+  	$('#single_circle_partial').toggle(400)
+  	$('#circles_partial').hide(400)
+  });
+
+  $('#single_circle_partial > a').on('click', function(event) {
+  	event.preventDefault();
+  	console.log(event.target.parentNode.parentNode.id);
+  	$('#single_circle_partial').hide(400)
+  	$('#circles_partial').show(400)
+  });
+
 });
 
 function addStem(event) {
@@ -21,7 +59,7 @@ function addStem(event) {
 		data: $('#add_stem').serialize()
 	})
 	.done(function(data) {
-		$('#my_stems').append(renderStem(data));
+		$('.my_stems').append(renderStem(data));
 		console.log("success");
 	})
 	.fail(function() {
@@ -34,8 +72,8 @@ function addStem(event) {
 
 function renderStem(Stem) {
 	console.log(Stem);
-	var stemRow = '<tr id="'+Stem.id+ '"><td>'+Stem.track_name+'</td><td>'+Stem.download_url+'</td><td><input type="button" value="update"><input type="button" value="delete"></td></tr>';
-	$('#my_stems').append(stemRow)
+	var stemDiv = '<div id="'+Stem.id+'"><h4>'+Stem.track_name+'</h4><p><a href="'+Stem.download_url+'">'+Stem.download_url+'</a></p></div>';
+	$('.my_stems').append(stemDiv)
 }
 
 function addCircle(event) {
@@ -52,6 +90,7 @@ function addCircle(event) {
 		console.log("error");
 	})
 	.always(function() {
+		$('input').prop('disabled', false);
 		console.log("complete");
 	});
 }

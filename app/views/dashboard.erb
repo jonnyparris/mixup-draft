@@ -1,4 +1,5 @@
-<div class="row">
+<%= erb :'partials/errors' %>
+ <div class="row">
     <div class="large-3 columns">
       <h1><a href="/dashboard"><img src="./images/mixup_logo1.png"/></a></h1>
     </div>
@@ -10,142 +11,27 @@
       </ul>
     </div>
   </div>
-
-  <div class="row">    
   
+  <div class="row">    
+
     <div class="large-9 push-3 columns">
-      
-      <h3>Stems</h3>
-      
-      <p>List of stems, plus form to add a new stem or not</p>
-
-      <table id="my_stems">
-        <tr>
-          <th>Track Name</th>
-          <th>Download Link</th>
-          <th></th>
-        </tr>
-        <tr>
-          <form id="add_stem">
-            <td><input type="text" name="track_name" placeholder="Enter track name for stems here..." required></td>
-            <td><input type="url" name="download_url" placeholder="Paste link to download folder of stems here..." required></td>
-            <td>
-              <button class="add_stem" type="submit">Add Stem</button>
-              <input type="hidden" name="producer_id" value="1">
-            </td>
-          </form>
-        </tr>
-
-        <% Stem.all.each do |stem| %>
-        <tr id="<%=stem.id%>" >
-          <td><%= stem.track_name %></td>
-          <td><a href="<%= stem.download_url %>"><%= stem.download_url %></a></td>
-          <td>
-            <input type="button" value="update">
-            <input type="button" value="delete">
-          </td>
-        </tr>
-
-        <% end %>
-
-      </table>
-      
-<h3>Circles</h3>
-
-<p>List of circles</p>
-
-<table id="my_circles">
-  <tr>
-    <th>Circle Name</th>
-    <th>Signup Deadline</th>
-    <th>Remix Submission Deadline</th>
-    <th>No. of Tracks</th>
-    <th></th>
-  </tr>
-  <tr>
-    <form id="add_circle">
-      <td><input type="text" name="name" placeholder="Enter circle name here..." required></td>
-      <td><input type="date" name="signup_deadline" required></td>
-      <td><input type="date" name="submit_deadline" required></td>
-      <td><input type="hidden" name="creator_id" placeholder="1"></td>
-      <td>
-        <button class="add_circle" type="submit">Add Circle</button>
-      </td>
-    </form>
-  </tr>
-
-  <% Circle.all.each do |circle| %>
-  <tr id="<%=circle.id%>" >
-    <td><%= circle.name %></td>
-    <td><%= circle.signup_deadline %></td>
-    <td><%= circle.submit_deadline %></td>
-    <td><%= circle.remix.count %></td>
-    <td>
-      <input type="button" value="update">
-      <input type="button" value="delete">
-    </td>
-  </tr>
-
-  <% end %>
-
-</table>
- 
-<h3>Remixes</h3>
-
-<p>List of all remixes</p>
-
-<table id="my_remixes">
-  <tr>
-    <th>Remix Name</th>
-    <th>Download Link</th>
-    <th>Remix Submission Deadline</th>
-    <th>No. of Tracks</th>
-    <th></th>
-  </tr>
-  <tr>
-    <form id="add_circle">
-      <td><input type="text" name="name" placeholder="Enter circle name here..." required></td>
-      <td><input type="date" name="signup_deadline" required></td>
-      <td><input type="date" name="submit_deadline" required></td>
-      <td><input type="hidden" name="creator_id" placeholder="1"></td>
-      <td>
-        <button class="add_circle" type="submit">Add Circle</button>
-      </td>
-    </form>
-  </tr>
-
-  <% Circle.all.each do |circle| %>
-  <tr id="<%=circle.id%>" >
-    <td><%= circle.name %></td>
-    <td><%= circle.signup_deadline %></td>
-    <td><%= circle.submit_deadline %></td>
-    <td><%= circle.remix.count %></td>
-    <td>
-      <input type="button" value="update">
-      <input type="button" value="delete">
-    </td>
-  </tr>
-
-  <% end %>
-
-</table>
-
+      <%= erb :'partials/my_stems' %>
+      <%= erb :'partials/circles' %>
+      <%= erb :'partials/single_circle', :locals => {circle_id: 1} %>
     </div>
     
-    
-     
      
     <div class="large-3 pull-9 columns">
-      <!-- <p><img src="http://placehold.it/320x240&text=Ad"/></p> -->
       <p><img src="./images/artistic_license.jpg"/></p>
-        
+      <h3><%= @user.producer_name %></h3>
+      <p><%= @user.location %></p>
+
       <ul class="side-nav">
-        <li><a href="#">Stems</a></li>
-        <li><a href="#">Circles</a></li>
-        <li><a href="#">Browse Remixes</a></li>
+        <li><a href="#Stems" id="stems">Stems</a></li>
+        <li><a href="#Circles" id="circles">Browse Circles</a></li>
+        <li><a href="#BrowseRemixes" id="remixes">Browse Remixes</a></li>
+        <li><a href="#BrowseProdcuers" id="producers">Browse Producers</a></li>
       </ul>
-      
-        
     </div>
     
   </div>
@@ -153,5 +39,5 @@
   
    
   
-
+ 
    
