@@ -112,7 +112,7 @@ function renderCircle(circle) {
 function submitStem(stemSubmitPacket) {
     $.ajax({
         url: '/circles/'+stemSubmitPacket.circle_id+'/stems',
-        type: 'POST)',
+        type: 'POST',
         data: stemSubmitPacket,
     })
     .done(function() {

@@ -23,7 +23,7 @@
     <% Producer.find(session[:user]).stems.each do |stem| %>
       <div id="<%=stem.id%>" >
         <h4><%= stem.track_name %></h4>
-          <p><a href="<%= stem.download_url %>"><%= stem.download_url %></a></p>
+          <p><a href="<%= stem.download_url %>" target="_blank"><%= stem.download_url %></a></p>
           <% if stem.remixes.count > 0 %>
           <h5><%= stem.track_name %> remixes</h5>
           <table>
