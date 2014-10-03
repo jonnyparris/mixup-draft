@@ -6,7 +6,7 @@
 	<p>Signup deadline: <%= @circle.signup_deadline %></p>
 	<p>Signup deadline: <%= @circle.signup_deadline %></p>
 	<p><%= @circle.remix.count %> stems submitted so far</p>
-	<button id="mixup">Start Mixup!</button>
+	<button id="mixup_circle" class=<%="#{@circle.id}"%>>Start Mixup!</button>
 	<button data-dropdown="join_circle" aria-controls="join_circle" aria-expanded="false" id="submit">Join Circle with Stem</button>
 	<button id="submit">Submit Remix</button>
 

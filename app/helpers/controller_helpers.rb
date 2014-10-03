@@ -14,7 +14,12 @@ def mixup(circle)
 	# assign remixer IDs to stem owners at random
 	# output newly mixed circle
 	members = circle.remix.map { |remix| remix.stem.producer}
-	n = (0..members.length-1).to_a.sample
+	n = (1..members.length-1).to_a.sample
 	remixers = members.rotate(n)
-	allocations = members.zip(remixers)
+	@allocations = Hash[members.zip(remixers)]
+	p"*"*80
+	p n
+	p "final allocations: #{@allocations}"
+	p"*"*80
+	@allocations
 end

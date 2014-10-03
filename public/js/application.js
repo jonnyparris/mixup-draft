@@ -37,7 +37,7 @@ $(document).ready(function() {
   });
 
   $('#my_circles .circle_row').on('click', function(event) {
-    console.log(event.target.parentNode.parentNode.id);
+    console.log('selected circle: '+event.target.parentNode.parentNode.id);
     var circle_id = event.target.parentNode.parentNode.id;
     $('#single_circle_partial').toggle(400)
     $('#circles_partial').hide(400)
@@ -56,6 +56,14 @@ $(document).ready(function() {
       console.log(event.target.className);
       var stemSubmitPacket = {circle_id: event.target.className, stem_name: event.target.innerText};
       submitStem(stemSubmitPacket);
+  });
+
+  $('#mixup_circle').on('click', function(event) {
+      event.preventDefault();
+      console.log(event);
+      console.log('selected circle for mixup: '+event.target.className);
+      var circlePacket = {circle_id: event.target.className};
+      mixupCircle(circlePacket);
   });
 
 });
@@ -116,6 +124,25 @@ function submitStem(stemSubmitPacket) {
         data: stemSubmitPacket,
     })
     .done(function() {
+        console.log("success");
+    })
+    .fail(function() {
+        console.log("error");
+    })
+    .always(function() {
+        console.log("complete");
+    });
+    
+}
+
+function mixupCircle(circlePacket) {
+    $.ajax({
+        url: '/circles/'+circlePacket.circle_id+'/mixup',
+        type: 'POST',
+        data: circlePacket,
+    })
+    .done(function(data) {
+        console.log(data);
         console.log("success");
     })
     .fail(function() {
