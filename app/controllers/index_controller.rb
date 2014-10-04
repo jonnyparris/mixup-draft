@@ -51,9 +51,8 @@ end
 #----------- Stems -----------
 # create stem
 post '/add_stem' do
-	content_type :json
 	Stem.create(params)
-	Stem.last.to_json
+	erb :'partials/my_stems'
 end
 
 # view stems
@@ -71,9 +70,8 @@ end
 #----------- Circles -----------
 # create circle
 post '/add_circle' do
-	content_type :json
 	Circle.create(params)
-	Circle.last.to_json
+	erb :'partials/circles'
 end
 
 # view circles

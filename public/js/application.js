@@ -83,7 +83,8 @@ function addStem(event) {
         data: $('#add_stem').serialize()
     })
     .done(function(data) {
-        $('.my_stems').append(renderStem(data));
+        $('#stems_partial').remove()
+        $('#dashboard_main').append(data);
         console.log("success");
     })
     .fail(function() {
@@ -107,7 +108,9 @@ function addCircle(event) {
         data: $('#add_circle').serialize(),
     })
     .done(function(data) {
-        renderCircle(data);
+        $('#circles_partial').remove()
+        $('#dashboard_main').append(data);
+        $('#circles_partial').show()
         console.log("success");
     })
     .fail(function() {
