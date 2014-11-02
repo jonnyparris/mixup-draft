@@ -1,6 +1,7 @@
 > **Note**: Work in progress - this was built in Sinatra as a learning step towards Ruby on Rails. Watch this space for a rails version.
 
 #Mixup
+![homepage screenshot](public/images/homepage_screenshot.jpg)
 
 ###the idea
 Think secret santa gift giving, but for music makers instead.
