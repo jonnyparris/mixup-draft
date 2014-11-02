@@ -1,0 +1,41 @@
+<div id="circles_partial" style="display: none">
+  <h3>Circles</h3>
+  
+  <p>List of ALL circles</p>
+  
+  <table id="my_circles">
+    <tr>
+      <th>Circle Name</th>
+      <th>Signup Deadline</th>
+      <th>Remix Submission Deadline</th>
+      <th>No. of Stems</th>
+      <th></th>
+    </tr>
+    <tr>
+      <form id="add_circle">
+        <td><input type="text" name="name" placeholder="Enter circle name here..." required></td>
+        <td><input type="date" name="signup_deadline" required></td>
+        <td><input type="date" name="submit_deadline" required></td>
+        <td><input type="hidden" name="creator_id" placeholder="1"></td>
+        <td>
+          <button class="add_circle" type="submit">Create Circle</button>
+        </td>
+      </form>
+    </tr>
+  
+    <% Circle.all.each do |circle| %>
+    <tr id="<%=circle.id%>" class="circle_row">
+      <td><a href="#"><%= circle.name %></a></td>
+      <td><%= circle.signup_deadline %></td>
+      <td><%= circle.submit_deadline %></td>
+      <td><%= circle.remix.count %></td>
+      <td>
+<!--         <button class="join_circle">Join Circle</button>
+        <input type="button" value="update">
+        <input type="button" value="delete"> -->
+      </td>
+    </tr>
+  
+    <% end %>
+  </table>
+</div>

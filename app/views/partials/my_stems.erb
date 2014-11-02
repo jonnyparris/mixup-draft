@@ -1,0 +1,49 @@
+<div id="stems_partial">
+  <div class="my_stems">
+    <h3>My Stems</h3>
+  
+    <table id="add_stems">
+      <form id="add_stem">
+        <tr>
+          <th>Track Name</th>
+          <th>Download Link</th>
+          <th></th>
+        </tr>
+        <tr>
+          <td><input type="text" name="track_name" placeholder="Enter track name for stems here..." required></td>
+          <td><input type="url" name="download_url" placeholder="Paste link to download folder of stems here..." required></td>
+          <td>
+            <button class="add_stem" type="submit">Add Stem</button>
+            <input type="hidden" name="producer_id" value="<%= session[:user] %>">
+          </td>
+        </form>
+      </tr>
+    </table>
+  
+    <% Producer.find(session[:user]).stems.each do |stem| %>
+      <div id="<%=stem.id%>" >
+        <h4><%= stem.track_name %></h4>
+          <p><a href="<%= stem.download_url %>" target="_blank"><%= stem.download_url %></a></p>
+          <% if stem.remixes.count > 0 %>
+          <h5><%= stem.track_name %> remixes</h5>
+          <table>
+            <tr>
+              <th>Remix</th>
+              <th>Remixer</th>
+              <th>Circle</th>
+              <th>Submission Deadline</th>
+            </tr>
+            <% stem.remixes.each do |remix| %>
+            <tr>
+              <td><%= remix.name %></td>
+              <td><%= remix.remixer_id %></td>
+              <td><%= "#{remix.circle.id} - #{remix.circle.name}" %></td>
+              <td><%= "#{remix.circle.submit_deadline}" %></td>
+            </tr>
+            <% end %>
+          </table>
+          <% end %>
+      </div>
+    <% end %> 
+  </div>
+</div>

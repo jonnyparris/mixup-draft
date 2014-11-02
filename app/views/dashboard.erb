@@ -1,0 +1,47 @@
+<%= erb :'partials/errors' %>
+ <div class="row">
+    <div class="large-3 columns">
+      <h1><a href="/dashboard"><img src="./images/mixup_logo1.png"/></a></h1>
+    </div>
+    <div class="large-9 columns">
+      <ul class="inline-list right">
+        <li><a href="https://www.youtube.com/watch?v=6wS5xOZ7Rq8">Help</a></li>
+        <li><a href="#">Account</a></li>
+        <li><a href="/">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="row">    
+
+    <div class="large-9 push-3 columns" id="dashboard_main">
+      <%= erb :'partials/my_stems' %>
+      <%= erb :'partials/circles' %>
+      <%= erb :'partials/single_circle', :locals => {circle_id: 1} %>
+    </div>
+     
+    <div class="large-3 pull-9 columns">
+      <p><img src="./images/artistic_license.jpg"/></p>
+      <h3><%= @user.producer_name %></h3>
+      <p><%= @user.location %></p>
+
+      <ul class="side-nav">
+        <li><a href="#Stems" id="stems">My Stems</a></li>
+        <li><a href="#" data-reveal-id="mixup_modal">Remixes TODO</a></li>
+        <li><a href="#Circles" id="circles">Browse Circles</a></li>
+<!--         <li><a href="#BrowseRemixes" id="remixes">Browse Remixes</a></li>
+        <li><a href="#BrowseProdcuers" id="producers">Browse Producers</a></li> -->
+      </ul>
+    </div>
+    
+  </div>
+    
+<div id="mixup_modal" class="reveal-modal" data-reveal>
+  <h2>Remixes assigned to you live here</h2>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+  
+   
+  
+ 
+   
