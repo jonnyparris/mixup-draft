@@ -1,0 +1,83 @@
+<%= erb :'partials/errors' %>
+
+  <div class="row">
+    <div class="large-3 columns">
+      <h1><img src="./images/mixup_logo1.png"/></h1>
+    </div>
+    <div class="large-9 columns">
+      <ul class="right button-group">
+      <li><a href="#" class="button signup" data-reveal-id="signup">Sign up</a></li>
+      <li><a href="#" class="button login" data-reveal-id="login">Login</a></li>
+      </ul>
+     </div>
+  </div>
+
+  <div class="row">
+    <div class="large-12 columns">
+    <div id="slider">
+      <img src="./images/electronic-music-guide.png"/>
+    </div>
+    
+    <hr/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-4 columns">
+      <img src="./images/simba1.jpg"/>
+      <h4>Submit a track.</h4>
+    </div>
+    
+    <div class="large-4 columns">
+      <img src="./images/logic_project.png"/>
+      <h4>Remix someone else's track.</h4>
+    </div>
+    
+    <div class="large-4 columns">
+      <img src="./images/simba_leaves_smaller2.png"/>
+      <h4>Get your baby back remixed!</h4>
+    </div>
+  
+    </div>
+
+<div id="signup" class="reveal-modal" data-reveal>
+  <h2>Sign up!</h2>
+  <form action="/signup" method="post">
+    <input type="text" name="first_name" placeholder="First Name" >
+    <input type="text" name="last_name" placeholder="Last Name" >
+    <input type="text" name="producer_name" placeholder="Producer Alias" required>
+    <input type="text" name="location" placeholder="Hometown" >
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <input type="password" name="password_confirmation" placeholder="Confirm Password" required>
+    <input type="submit" class="button right" value="Enter">
+  </form>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+
+<div id="login" class="reveal-modal" data-reveal>
+  <h2>Login</h2>
+  <form action="/login" method="get">
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <input type="submit" class="button right" value="Enter">
+  </form>
+  <a class="close-reveal-modal">&#215;</a>
+  <button id="sc_login"><img src="http://connect.soundcloud.com/2/btn-connect-sc-l.png"></button>
+</div>
+
+<!-- <script src="http://connect.soundcloud.com/sdk.js"></script> -->
+<script>
+// // initialize client with app credentials
+// SC.initialize({
+//   client_id: '1e106ba401ba9fdd37e13a074987848f',
+//   redirect_uri: 'localhost:9393/dashboard'
+// });
+
+// // initiate auth popup
+// SC.connect(function() {
+//   SC.get('/me', function(me) { 
+//     alert('Hello, ' + me.username); 
+//   });
+// });
+</script>
