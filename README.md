@@ -1,30 +1,20 @@
-> **Note**: This branch (master) contains a skeleton without any app code, perfect for creating a _new_ application or challenge. If you're looking for an example app built with this skeleton, take a look at the [example](/../..//tree/example) branch which includes basic CRUD and RSpec tests.
+> **Note**: Work in progress - this was built in Sinatra as a learning step towards Ruby on Rails. Watch this space for a rails version.
 
-### Purpose
-The Sinatra Skeleton:
+#Mixup
 
-1. Provides a foundation for building challenges or creating a new Sinatra application.
-2. Demonstrates a reasonable set of practices around building Sinatra applications.
-3. Eases the transition to Rails for Dev Bootcamp students
+###the idea
+Think secret santa gift giving, but for music makers instead.
 
-### Quickstart
+1. You submit a pack of stems to a track you created to a circle of producers (like names in a hat).
+2. You receive a pack of stems at random from the circle.
+3. You create beautiful new remix with those stems.
+4. On the deadline (xmas day!), you both send and receive some sweet new musical creations.
 
-1.  `bundle install`
-2.  `shotgun config.ru`
+###the code
+* Built with a fairly skinny Sinatra skeleton, as a means to build out a full stack application.
+* The schema is pretty efficient but confusing as a result.
+* There's a full suite of model tests in Rspec used for TDDing the schema...painstakingly slowly as it was my first time getting intimate with ActiveRecord on my own.
+* Foundation is powering the brunt of the front end, with some cheeky google images copypasta.
 
-As needed, create models & migrations with the `rake` tasks:
-
-```
-rake generate:migration  # Create an empty migration in db/migrate, e.g., rake generate:migration NAME=create_tasks
-rake generate:model      # Create an empty model in app/models, e.g., rake generate:model NAME=User
-```
-
-### Contributing
-
-We would love for you to help make the skeleton more awesome, There are three ways to contribute:
-
-1. Ask for a bug fix or enhancement!
-2. Submit a pull request for a bug fix or enhancement!
-3. Code review an open pull request!
-
-Be prepared to give and receive specific, actionable, and kind feedback!
+###the future
+Secure and deployed rails app...and some excited music producers, fingers crossed!
